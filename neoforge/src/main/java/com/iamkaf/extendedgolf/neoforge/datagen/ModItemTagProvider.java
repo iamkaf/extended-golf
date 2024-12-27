@@ -166,7 +166,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         tag(ExtendedGolfTags.breeze).add(Items.FEATHER).add(Items.PHANTOM_MEMBRANE);
 
-        tag(ExtendedGolfTags.bee).addTag(ItemTags.FLOWERS);
+        tag(ExtendedGolfTags.bee).add(Items.BONE_MEAL);
 
         tag(ExtendedGolfTags.wolf).add(Items.BONE).add(Items.RABBIT_FOOT);
 

@@ -4,9 +4,11 @@ import com.iamkaf.amber.api.core.AmberMod;
 import com.mojang.logging.LogUtils;
 import dev.architectury.event.events.common.LootEvent;
 import net.minecraft.advancements.critereon.EntityPredicate;
+import net.minecraft.advancements.critereon.EntityTypePredicate;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -55,7 +57,11 @@ public class ExtendedGolf extends AmberMod {
     private static LootPool.@NotNull Builder makeLootTable(LootPoolSingletonContainer.Builder<?> entry) {
         return LootPool.lootPool().add(entry).when(LootItemEntityPropertyCondition.hasProperties(
                 LootContext.EntityTarget.ATTACKER,
-                EntityPredicate.Builder.entity().of(EntityTypeTags.SKELETONS)
+                EntityPredicate.Builder.entity()
+                        .entityType(EntityTypePredicate.of(
+                                BuiltInRegistries.ENTITY_TYPE,
+                                EntityType.SKELETON
+                        ))
         ));
     }
 }
